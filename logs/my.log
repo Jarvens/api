@@ -1,0 +1,80 @@
+2017-03-28 15:55:44,900  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3201 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 15:55:44,904 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 15:55:44,905  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 15:55:51,294  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 15:55:51,956  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 15:55:53,692  INFO Application:57 ---- Started Application in 9.805 seconds (JVM running for 10.956)
+2017-03-28 15:59:02,912  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3260 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 15:59:02,916 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 15:59:02,917  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 15:59:10,047  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 15:59:10,776  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 15:59:12,243  INFO Application:57 ---- Started Application in 10.392 seconds (JVM running for 12.076)
+2017-03-28 16:03:23,876  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3309 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:03:23,886 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:03:23,888  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:03:30,302  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:03:31,104  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:03:33,014  INFO Application:57 ---- Started Application in 9.998 seconds (JVM running for 11.029)
+2017-03-28 16:04:53,039  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3337 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:04:53,044 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:04:53,045  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:04:59,243  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:04:59,912  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:05:01,604  INFO Application:57 ---- Started Application in 9.141 seconds (JVM running for 10.274)
+2017-03-28 16:05:41,547  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3351 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:05:41,551 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:05:41,552  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:05:47,764  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:05:48,612  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:05:50,256  INFO Application:57 ---- Started Application in 9.469 seconds (JVM running for 10.341)
+2017-03-28 16:07:13,795  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3376 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:07:13,799 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:07:13,800  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:07:20,728  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:07:21,592  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:07:23,190  INFO Application:57 ---- Started Application in 10.429 seconds (JVM running for 11.555)
+2017-03-28 16:09:16,757  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3398 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:09:16,762 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:09:16,763  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:09:22,883  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:09:23,680  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:09:25,381  INFO Application:57 ---- Started Application in 9.424 seconds (JVM running for 10.4)
+2017-03-28 16:12:29,921  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3450 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:12:29,925 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:12:29,926  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:12:36,367  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:13:37,659  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3464 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:13:37,662 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:13:37,663  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:13:43,876  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:14:14,863  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3472 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:14:14,868 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:14:14,869  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:14:21,654  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:14:22,337  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:14:24,032  INFO Application:57 ---- Started Application in 9.996 seconds (JVM running for 11.199)
+2017-03-28 16:23:31,251  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3570 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:23:31,259 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:23:31,260  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:23:37,178  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:23:37,816  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:23:39,402  INFO Application:57 ---- Started Application in 8.918 seconds (JVM running for 10.253)
+2017-03-28 16:33:02,913  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3696 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:33:02,921 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:33:02,925  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:33:10,227  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:33:10,992  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:33:12,426  INFO Application:57 ---- Started Application in 10.401 seconds (JVM running for 11.247)
+2017-03-28 16:35:33,646  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3729 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:35:33,650 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:35:33,651  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:35:39,341  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:35:39,462  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:35:41,256  INFO Application:57 ---- Started Application in 8.349 seconds (JVM running for 9.384)
+2017-03-28 16:38:42,410  INFO Application:48 ---- Starting Application on KunlundeMacBook-Pro.local with PID 3765 (/Users/kunlun/Documents/api/target/classes started by kunlun in /Users/kunlun/Documents/api)
+2017-03-28 16:38:42,416 DEBUG Application:51 ---- Running with Spring Boot v1.3.2.RELEASE, Spring v4.2.4.RELEASE
+2017-03-28 16:38:42,417  INFO Application:666 ---- No active profile set, falling back to default profiles: default
+2017-03-28 16:38:48,233  INFO DatabaseConfig:34 ---- 注入Druid连接池...
+2017-03-28 16:38:48,315  INFO SpringConfig:44 ---- 持久化配置服务加载完成 ...>
+2017-03-28 16:38:50,313  INFO Application:57 ---- Started Application in 8.662 seconds (JVM running for 9.68)
