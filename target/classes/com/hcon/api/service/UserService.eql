@@ -1,2 +1,0 @@
--- [queryByPage]
-select id,name from t_user;

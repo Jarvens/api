@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("sys")
-@Api(value = "系统登录", tags = "登录接口", description = "系统登录")
+@Api(value = "登录接口列表", tags = "登录接口", description = "系统登录")
 public class LoginController {
 
     /**
