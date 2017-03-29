@@ -41,7 +41,7 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
                         minerable.getString("diamondUsername"),
                         minerable.getString("diamondPassword")))));
 
-        logger.info("持久化配置服务加载完成 ...>");
+        logger.info("Diamond init success ");
         return diamondSDK;
     }
 

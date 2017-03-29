@@ -28,10 +28,10 @@ public class Swagger2 {
     }
 
     private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("红康互联科技有限公司")
-                .description("RESTful接口文档")
+        return new ApiInfoBuilder().title("红康互联科技有限公司API")
+                .description("")
                 .termsOfServiceUrl("http://hongkang.api.com")
-                .contact("kunlun")
+                .contact("红康互联网")
                 .version("1.0")
                 .build();
     }
