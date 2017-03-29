@@ -25,8 +25,12 @@ public class UserRegisterService {
      * @param key
      * @return
      */
-    private List<UserRegister> queryUserByCondition(EqlPage eqlPage, String key) {
-        return new Dql().returnType(UserRegister.class).params(key).limit(eqlPage).execute();
+    public List<UserRegister> queryUserByCondition(EqlPage eqlPage, String key) {
+        List<UserRegister> userRegisterList = new Dql().returnType(UserRegister.class)
+                .params(key)
+                .limit(eqlPage)
+                .execute();
+        return userRegisterList;
     }
 
     /**
@@ -35,11 +39,16 @@ public class UserRegisterService {
      * @param account
      * @return
      */
-    private Boolean isRegister(String account) {
+    public Boolean isRegister(String account) {
         return new Dql().returnType(UserRegister.class).params(account).execute() == null ? true : false;
     }
 
-    private DataRet<String> register(UserRegister userRegister) {
+    /**
+     * 用户注册
+     * @param userRegister
+     * @return
+     */
+    public DataRet<String> register(UserRegister userRegister) {
         DataRet dataRet = new DataRet();
         if (this.isRegister(userRegister.getAccount())) {
             dataRet.setErrorCode("ACCOUNT_EXIST");

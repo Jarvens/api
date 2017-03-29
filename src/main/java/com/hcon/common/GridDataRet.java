@@ -22,7 +22,7 @@ public class GridDataRet<T> implements Serializable {
     private List<T> list;
 
     @ApiModelProperty(notes = "总条数")
-    private Long total = 0l;
+    private Integer total = 0;
 
     @ApiModelProperty(notes = "当前页数")
     private Integer page = 1;
@@ -63,11 +63,11 @@ public class GridDataRet<T> implements Serializable {
         this.list = list;
     }
 
-    public Long getTotal() {
+    public Integer getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(Integer total) {
         this.total = total;
     }
 
@@ -85,5 +85,9 @@ public class GridDataRet<T> implements Serializable {
 
     public void setSize(Integer size) {
         this.size = size;
+    }
+
+    public Boolean isSuccess() {
+        return this.errorCode == null || "".equals(this.errorCode.trim());
     }
 }
