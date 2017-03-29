@@ -21,7 +21,7 @@ public abstract class LoginInterceptor extends LoginVerifyInterceptor {
     @Override
     protected boolean validUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
         Pair<Boolean, UserRegister> valid = validCookie();
-        if (!valid.getFirst()) {
+        if (null == valid||!valid.getFirst()) {
             logger.info("用户未登录.......>");
             redirect2Login(request, response);
             return false;
