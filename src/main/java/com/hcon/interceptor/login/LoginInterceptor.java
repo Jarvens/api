@@ -35,7 +35,6 @@ public abstract class LoginInterceptor extends LoginVerifyInterceptor {
             return false;
         }
         userRegister.updateCurrentTime();
-
         return true;
     }
 }
