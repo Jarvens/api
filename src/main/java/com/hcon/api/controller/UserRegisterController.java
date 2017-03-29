@@ -4,6 +4,7 @@ import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.common.DataRet;
 import com.hcon.common.GridDataRet;
+import com.hcon.interceptor.login.annotations.LoginVerifyAction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -21,6 +22,7 @@ import java.util.List;
 /**
  * Created by kunlun on 2017/3/28.
  */
+@LoginVerifyAction
 @RequestMapping("user")
 @RestController
 @Api(value = "用户接口列表", tags = "用户信息接口", description = "获取用户信息接口")
