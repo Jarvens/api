@@ -29,7 +29,7 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("红康互联科技有限公司API")
-                .description("")
+                .description("详细内容请查看相关接口")
                 .termsOfServiceUrl("http://hongkang.api.com")
                 .contact("红康互联网")
                 .version("1.0")

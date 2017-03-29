@@ -1,2 +1,2 @@
 -- [queryByPage]
-select * from t_user;
+select id,name from t_user;
