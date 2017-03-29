@@ -1,0 +1,2 @@
+-- [queryUserByCondition]
+select * from user_register

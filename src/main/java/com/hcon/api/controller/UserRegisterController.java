@@ -120,31 +120,4 @@ public class UserRegisterController {
         return ret;
     }
 
-    /**
-     * 登录
-     *
-     * @param userRegister
-     * @return
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ApiOperation(value = "登录", notes = "用户登录")
-    @ApiImplicitParam(value = "用户信息", name = "userRegister", dataType = "UserRegister", required = true)
-    public DataRet<String> login(@RequestBody UserRegister userRegister) {
-        DataRet<String> dataRet = new DataRet<>();
-        return dataRet;
-    }
-
-    /**
-     * 退出系统
-     * @param userRegister
-     * @return
-     */
-    @RequestMapping(value = "/logout",method = RequestMethod.POST)
-    @ApiOperation(value = "注销登录",notes = "退出系统")
-    @ApiImplicitParam(value = "用户信息",name = "userRegister",dataType = "UserRegister",required = true)
-    public DataRet<String> logout(@RequestBody UserRegister userRegister){
-        return null;
-    }
-
-
 }
