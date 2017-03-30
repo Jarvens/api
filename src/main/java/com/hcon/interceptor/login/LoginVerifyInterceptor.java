@@ -20,9 +20,6 @@ public abstract class LoginVerifyInterceptor extends HandlerInterceptorAdapter {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginVerifyInterceptor.class);
 
-    //重定向URL
-    protected String REDIRECT_URL = "";
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         try {

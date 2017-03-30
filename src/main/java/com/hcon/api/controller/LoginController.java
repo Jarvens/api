@@ -5,6 +5,7 @@ import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.common.DataRet;
 import com.hcon.utils.LoginHelper;
+import com.hcon.utils.TokenUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -41,14 +42,18 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ApiOperation(value = "登录", notes = "用户登录")
     @ApiImplicitParam(value = "用户信息", name = "userRegister", dataType = "UserRegister", required = true)
-    public DataRet<String> login(@RequestBody UserRegister userRegister, HttpServletResponse response) {
+    public DataRet<String> login(@RequestBody UserRegister userRegister,HttpServletResponse response) {
         DataRet<String> dataRet = new DataRet<>();
         boolean flag = userRegisterService.isRegister(userRegister.getAccount());
         if (flag) {
+            //生成Token
+            String tokenVal = TokenUtils.createToken(userRegister);
             //写cookie
-            LoginHelper.sysLoginSuccess(response, userRegister, false);
+            //LoginHelper.sysLoginSuccess(response, userRegister, false);
             //更新系统时间
             userRegister.updateCurrentTime();
+            dataRet.setMessage("登录成功");
+            dataRet.setBody(tokenVal);
         } else {
             dataRet.setErrorCode("ACCOUNT_PASSWORD_ERROR");
             dataRet.setMessage("账号或者密码错误请重新输入");

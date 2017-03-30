@@ -1,8 +1,10 @@
 package com.hcon.interceptor.login;
 
+import com.alibaba.fastjson.JSON;
 import com.hcon.api.domain.UserRegister;
 import com.hcon.common.Pair;
 import com.hcon.consts.AuthConstants;
+import com.hcon.utils.Aes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,17 +22,19 @@ public abstract class LoginInterceptor extends LoginVerifyInterceptor {
 
     @Override
     protected boolean validUser(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        Pair<Boolean, UserRegister> valid = validCookie();
-        if (null == valid||!valid.getFirst()) {
-            logger.info("用户未登录.......>");
+        logger.info("request信息包含请求头token:{}", request.getHeader(AuthConstants.SYS.TOKEN_NAME));
+        String token = request.getHeader(AuthConstants.SYS.TOKEN_NAME);
+
+        UserRegister userRegister = new UserRegister();
+        userRegister = JSON.parseObject(Aes.decrypt(token, AuthConstants.SYS.TOKEN_DECRYPT_KEY), UserRegister.class);
+        if (null == userRegister) {
             redirect2Login(request, response);
             return false;
         }
-        UserRegister userRegister = valid.getSecond();
-        long expireTime = userRegister.getCurrentTime() + AuthConstants.SYS.EXPIRE_SECONDS * 1000;
+        long expireTime = userRegister.getCurrentTime() + AuthConstants.SYS.TOKEN_EXPIRE_SECONDS * 1000;
         long currentTimeInMillis = Calendar.getInstance().getTimeInMillis();
         if (currentTimeInMillis > expireTime) {
-            logger.info("登录超时.........>");
+            logger.info("登录超时......");
             redirect2Login(request, response);
             return false;
         }
