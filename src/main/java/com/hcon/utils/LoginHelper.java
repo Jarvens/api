@@ -32,12 +32,12 @@ public class LoginHelper {
 
     private static void loginSuccess(HttpServletResponse response, UserRegister userRegister, String cookieName, boolean authLogin) {
         if (!StringUtils.hasLength(userRegister.getAccount())) {
-            logger.info("Unable to read Account.......");
+            logger.info("无法读取账户信息...");
             return;
         }
         userRegister.updateCurrentTime();
         String cookieStr = Aes.encrypt(JSON.toJSONString(userRegister), AuthConstants.SYS.COOKIE_DECRYPT_KEY);
-        logger.info("cookie is ..........>", cookieName, cookieStr);
+        logger.info("cookie名称:{},Cookie值:{}", cookieName, cookieStr);
         //判断是否为自动登录
         if (authLogin) {
             //cookies.addCookie(response,AuthConstants.)
@@ -45,17 +45,6 @@ public class LoginHelper {
             cookies.addCookie(response, cookieName, cookieStr, AuthConstants.SYS.EXPIRE_SECONDS, TimeUnit.SECONDS);
         }
 
-        clearAuthFail(response);
-    }
-
-
-    /**
-     * 登录成功后，清空失败记录
-     *
-     * @param response
-     */
-    private static void clearAuthFail(HttpServletResponse response) {
-        cookies.delCookie(response, AuthConstants.HCON_AUTH_FAIL);
     }
 
 }

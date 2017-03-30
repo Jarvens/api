@@ -1,5 +1,6 @@
 package com.hcon.api.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.common.DataRet;
@@ -7,6 +8,8 @@ import com.hcon.utils.LoginHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("sys")
 @Api(value = "登录接口列表", tags = "登录接口", description = "系统登录")
 public class LoginController {
+
+    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private UserRegisterService userRegisterService;
