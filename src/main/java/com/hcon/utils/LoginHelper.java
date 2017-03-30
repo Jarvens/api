@@ -31,7 +31,7 @@ public class LoginHelper {
     }
 
     private static void loginSuccess(HttpServletResponse response, UserRegister userRegister, String cookieName, boolean authLogin) {
-        if (StringUtils.hasLength(userRegister.getAccount())) {
+        if (!StringUtils.hasLength(userRegister.getAccount())) {
             logger.info("Unable to read Account.......");
             return;
         }

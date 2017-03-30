@@ -40,7 +40,7 @@ public class UserRegisterService {
      * @return
      */
     public Boolean isRegister(String account) {
-        return new Dql().returnType(UserRegister.class).params(account).execute() == null ? true : false;
+        return new Dql().returnType(UserRegister.class).params(account).execute() != null ? true : false;
     }
 
     /**

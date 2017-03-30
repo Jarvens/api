@@ -3,6 +3,7 @@ package com.hcon.api.controller;
 import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.common.DataRet;
+import com.hcon.utils.LoginHelper;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by kunlun on 2017/3/29.
@@ -32,13 +36,16 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ApiOperation(value = "登录", notes = "用户登录")
     @ApiImplicitParam(value = "用户信息", name = "userRegister", dataType = "UserRegister", required = true)
-    public DataRet<String> login(@RequestBody UserRegister userRegister) {
+    public DataRet<String> login(@RequestBody UserRegister userRegister, HttpServletResponse response) {
         DataRet<String> dataRet = new DataRet<>();
         boolean flag = userRegisterService.isRegister(userRegister.getAccount());
         if (flag) {
-
+            //写cookie
+            LoginHelper.sysLoginSuccess(response, userRegister, false);
+            //更新系统时间
+            userRegister.updateCurrentTime();
         } else {
-            dataRet.setErrorCode("ACCOUNT_NOT_EXIST");
+            dataRet.setErrorCode("ACCOUNT_PASSWORD_ERROR");
             dataRet.setMessage("账号或者密码错误请重新输入");
         }
         return dataRet;
@@ -58,9 +65,9 @@ public class LoginController {
     }
 
     /**
-     *
      * @return
      */
+    @ApiIgnore
     @RequestMapping(value = "/retry")
     public DataRet<String> retry() {
         DataRet<String> ret = new DataRet<>();

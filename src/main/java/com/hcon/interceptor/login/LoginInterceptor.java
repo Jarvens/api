@@ -16,7 +16,7 @@ import java.util.Calendar;
  */
 public abstract class LoginInterceptor extends LoginVerifyInterceptor {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
+    protected static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
     @Override
     protected boolean validUser(HttpServletRequest request, HttpServletResponse response) throws Exception {

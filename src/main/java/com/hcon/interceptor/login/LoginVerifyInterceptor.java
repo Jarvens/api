@@ -25,13 +25,6 @@ public abstract class LoginVerifyInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        REDIRECT_URL = request.getServletPath();
-        if (request.getQueryString() != null) {
-            REDIRECT_URL += "?" + request.getQueryString();
-        }
-
-        logger.info("RequestUri........>", REDIRECT_URL);
-        logger.info("Request.........>", JSON.toJSONString(request.getQueryString()));
         try {
             if (!LoginVerifyHelper.needVerifyLogin(handler, getType())) {
                 return true;

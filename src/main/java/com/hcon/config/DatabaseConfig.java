@@ -14,8 +14,8 @@ import javax.sql.DataSource;
 /**
  * Created by kunlun on 2017/3/28.
  */
-@Configuration
-@EnableTransactionManagement
+//@Configuration
+//@EnableTransactionManagement
 public class DatabaseConfig {
 
     private static Logger logger = LoggerFactory.getLogger(DatabaseConfig.class);
