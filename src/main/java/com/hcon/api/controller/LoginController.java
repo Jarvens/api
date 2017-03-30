@@ -1,10 +1,8 @@
 package com.hcon.api.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.common.DataRet;
-import com.hcon.utils.LoginHelper;
 import com.hcon.utils.TokenUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -28,8 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 @Api(value = "登录接口列表", tags = "登录接口", description = "系统登录")
 public class LoginController {
 
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
-
     @Autowired
     private UserRegisterService userRegisterService;
 
@@ -48,8 +44,6 @@ public class LoginController {
         if (flag) {
             //生成Token
             String tokenVal = TokenUtils.createToken(userRegister);
-            //写cookie
-            //LoginHelper.sysLoginSuccess(response, userRegister, false);
             //更新系统时间
             userRegister.updateCurrentTime();
             dataRet.setMessage("登录成功");

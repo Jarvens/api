@@ -26,7 +26,7 @@ public abstract class LoginVerifyInterceptor extends HandlerInterceptorAdapter {
             if (!LoginVerifyHelper.needVerifyLogin(handler, getType())) {
                 return true;
             }
-            return validUser(request, response);
+            return validToken(request, response);
         } catch (Exception e) {
             logger.info("登录校验失败......>", e);
 
@@ -37,11 +37,8 @@ public abstract class LoginVerifyInterceptor extends HandlerInterceptorAdapter {
     //校验类型
     protected abstract VerifyType getType();
 
-    //用户信息校验
-    protected abstract boolean validUser(HttpServletRequest request, HttpServletResponse response) throws Exception;
-
-    //Cookie校验
-    protected abstract <T> Pair<Boolean, T> validCookie();
+    //token校验
+    protected abstract boolean validToken(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
     /**
      * 重定向 登录

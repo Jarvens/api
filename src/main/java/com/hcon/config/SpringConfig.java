@@ -1,7 +1,7 @@
 package com.hcon.config;
 
 import com.google.common.collect.Lists;
-import com.hcon.interceptor.login.SysLoginInterceptor;
+import com.hcon.interceptor.login.LoginInterceptor;
 import org.n3r.diamond.client.Miner;
 import org.n3r.diamond.client.Minerable;
 import org.n3r.diamond.sdk.DiamondSDK;
@@ -64,7 +64,7 @@ public class SpringConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new SysLoginInterceptor());
+        registry.addInterceptor(new LoginInterceptor());
         super.addInterceptors(registry);
     }
 
