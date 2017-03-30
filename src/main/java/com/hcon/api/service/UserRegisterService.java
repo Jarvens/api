@@ -2,6 +2,7 @@ package com.hcon.api.service;
 
 import com.hcon.api.domain.UserRegister;
 import com.hcon.common.DataRet;
+import com.hcon.utils.Md5;
 import org.n3r.eql.EqlPage;
 import org.n3r.eql.diamond.Dql;
 import org.slf4j.Logger;
@@ -45,6 +46,7 @@ public class UserRegisterService {
 
     /**
      * 用户注册
+     *
      * @param userRegister
      * @return
      */
@@ -56,5 +58,27 @@ public class UserRegisterService {
             return dataRet;
         }
         return dataRet;
+    }
+
+    /**
+     * 用户登录
+     *
+     * @param userRegister
+     * @return
+     */
+    public boolean login(UserRegister userRegister) {
+        UserRegister user = new Dql().selectFirst("login")
+                .returnType(UserRegister.class)
+                .params(userRegister.getAccount())
+                .execute();
+        if (null != user) {
+            logger.info("MD5加密值:{}",Md5.digest(userRegister.getLoginToken()));
+            if (!Md5.digest(userRegister.getLoginToken()).equals(user.getLoginToken())) {
+                return false;
+            }
+            return true;
+        }
+        return false;
+
     }
 }

@@ -3,3 +3,6 @@ select * from user_register
 
 -- [isRegister]
 select * from user_register where account=##
+
+-- [login]
+select * from user_register where account=##
