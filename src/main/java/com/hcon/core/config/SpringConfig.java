@@ -1,7 +1,7 @@
-package com.hcon.config;
+package com.hcon.core.config;
 
 import com.google.common.collect.Lists;
-import com.hcon.interceptor.login.LoginInterceptor;
+import com.hcon.core.interceptor.login.LoginInterceptor;
 import org.n3r.diamond.client.Miner;
 import org.n3r.diamond.client.Minerable;
 import org.n3r.diamond.sdk.DiamondSDK;

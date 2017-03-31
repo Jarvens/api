@@ -2,9 +2,9 @@ package com.hcon.api.controller;
 
 import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
-import com.hcon.common.DataRet;
-import com.hcon.common.GridDataRet;
-import com.hcon.interceptor.login.annotations.LoginVerifyAction;
+import com.hcon.core.common.DataRet;
+import com.hcon.core.common.GridDataRet;
+import com.hcon.core.interceptor.login.annotations.LoginVerifyAction;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;

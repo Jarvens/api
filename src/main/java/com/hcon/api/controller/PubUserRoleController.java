@@ -1,8 +1,8 @@
 package com.hcon.api.controller;
 
 import com.hcon.api.domain.PubUserRole;
-import com.hcon.common.DataRet;
-import com.hcon.common.GridDataRet;
+import com.hcon.core.common.DataRet;
+import com.hcon.core.common.GridDataRet;
 import io.swagger.annotations.*;
 import org.n3r.eql.EqlPage;
 import org.springframework.web.bind.annotation.RequestBody;

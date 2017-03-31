@@ -1,4 +1,4 @@
-package com.hcon.config;
+package com.hcon.core.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.n3r.diamond.client.Miner;
@@ -6,8 +6,6 @@ import org.n3r.diamond.client.Minerable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 

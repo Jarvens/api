@@ -1,4 +1,4 @@
-package com.hcon.common;
+package com.hcon.core.common;
 
 import com.hcon.utils.Aes;
 import org.n3r.diamond.client.Miner;
@@ -16,14 +16,6 @@ public class HconAes {
         String encryptionKeyConfig = system.getString("cookie.encryption.key", "8Ts1Ax2Duehy7BSLJEo2Rg==");
 
         return Aes.getKey(encryptionKeyConfig);
-    }
-
-    public String encryptCookieName(String value) {
-        return Aes.encrypt(value, getCookieKey());
-    }
-
-    public String decryptCookieName(String value) {
-        return Aes.decrypt(value, getCookieKey());
     }
 
     private  Key getAesKey() {

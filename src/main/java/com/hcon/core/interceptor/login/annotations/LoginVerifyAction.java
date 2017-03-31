@@ -1,4 +1,4 @@
-package com.hcon.interceptor.login.annotations;
+package com.hcon.core.interceptor.login.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

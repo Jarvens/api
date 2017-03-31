@@ -1,4 +1,4 @@
-package com.hcon.common;
+package com.hcon.core.common;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package com.hcon.common;
+package com.hcon.core.common;
 
 import io.swagger.annotations.ApiModelProperty;
 

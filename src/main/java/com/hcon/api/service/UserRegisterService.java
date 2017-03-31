@@ -1,7 +1,7 @@
 package com.hcon.api.service;
 
 import com.hcon.api.domain.UserRegister;
-import com.hcon.common.DataRet;
+import com.hcon.core.common.DataRet;
 import com.hcon.utils.Md5;
 import org.n3r.eql.EqlPage;
 import org.n3r.eql.diamond.Dql;
@@ -53,10 +53,15 @@ public class UserRegisterService {
     public DataRet<String> register(UserRegister userRegister) {
         DataRet dataRet = new DataRet();
         if (this.isRegister(userRegister.getAccount())) {
-            dataRet.setErrorCode("ACCOUNT_EXIST");
-            dataRet.setMessage("账号已存在,请重新输入！");
-            return dataRet;
+            return this.result("account_exist", "账号已存在,请重新输入");
         }
+        if (this.queryUserByUserName(userRegister.getName())) {
+            return this.result("userName_exist", "用户名已存在,请重新输入");
+        }
+        String password = Md5.digest("888888");
+        userRegister.setLoginToken(password);
+
+
         return dataRet;
     }
 
@@ -72,13 +77,39 @@ public class UserRegisterService {
                 .params(userRegister.getAccount())
                 .execute();
         if (null != user) {
-            logger.info("MD5加密值:{}",Md5.digest(userRegister.getLoginToken()));
+            logger.info("MD5加密值:{}", Md5.digest(userRegister.getLoginToken()));
             if (!Md5.digest(userRegister.getLoginToken()).equals(user.getLoginToken())) {
                 return false;
             }
             return true;
         }
         return false;
+    }
 
+    /**
+     * 检查用户名是否存在
+     *
+     * @param userName
+     * @return
+     */
+    public boolean queryUserByUserName(String userName) {
+        return new Dql().selectFirst("queryUserByUserName")
+                .returnType(UserRegister.class)
+                .params(userName)
+                .execute() == null ? true : false;
+    }
+
+    /**
+     * 公共方法
+     *
+     * @param errorCode
+     * @param message
+     * @return
+     */
+    private DataRet<String> result(String errorCode, String message) {
+        DataRet<String> ret = new DataRet<>();
+        ret.setErrorCode(errorCode);
+        ret.setMessage(message);
+        return ret;
     }
 }

@@ -2,7 +2,8 @@ package com.hcon.api.controller;
 
 import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
-import com.hcon.common.DataRet;
+import com.hcon.core.common.DataRet;
+import com.hcon.utils.Redis;
 import com.hcon.utils.TokenUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -39,10 +40,9 @@ public class LoginController {
     @ApiImplicitParam(value = "用户信息", name = "userRegister", dataType = "UserRegister", required = true)
     public DataRet<String> login(@RequestBody UserRegister userRegister, HttpServletResponse response) {
         DataRet<String> dataRet = new DataRet<>();
+        String value = Redis.get("name1");
         if (StringUtils.isEmpty(userRegister.getAccount()) || StringUtils.isEmpty(userRegister.getLoginToken())) {
-            dataRet.setErrorCode("NEED_ACCOUNT_PASSWORD");
-            dataRet.setMessage("请输入用户名或密码");
-            return dataRet;
+            return this.result(dataRet, "password_error", "用户名或密码错误");
         }
         boolean flag = userRegisterService.login(userRegister);
         if (flag) {
@@ -52,11 +52,10 @@ public class LoginController {
             userRegister.updateCurrentTime();
             dataRet.setMessage("登录成功");
             dataRet.setBody(tokenVal);
+            return dataRet;
         } else {
-            dataRet.setErrorCode("ACCOUNT_PASSWORD_ERROR");
-            dataRet.setMessage("账号或者密码错误请重新输入");
+            return this.result(dataRet, "account_password_error", "账号或密码错误请重新输入");
         }
-        return dataRet;
     }
 
     /**
@@ -72,15 +71,15 @@ public class LoginController {
         return null;
     }
 
+
     /**
+     * @param errorCode
+     * @param message
      * @return
      */
-    @ApiIgnore
-    @RequestMapping(value = "/permission-denied")
-    public DataRet<String> permissionDenied() {
-        DataRet<String> ret = new DataRet<>();
-        ret.setMessage("权限不足,请联系管理员...");
-        ret.setErrorCode("permission_denied");
+    private DataRet<String> result(DataRet<String> ret, String errorCode, String message) {
+        ret.setErrorCode(errorCode);
+        ret.setMessage(message);
         return ret;
     }
 }

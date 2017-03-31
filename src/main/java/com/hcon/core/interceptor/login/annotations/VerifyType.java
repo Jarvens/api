@@ -1,4 +1,4 @@
-package com.hcon.interceptor.login.annotations;
+package com.hcon.core.interceptor.login.annotations;
 
 /**
  * 用户类型

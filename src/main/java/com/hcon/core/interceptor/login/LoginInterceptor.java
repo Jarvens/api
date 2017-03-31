@@ -1,11 +1,10 @@
-package com.hcon.interceptor.login;
+package com.hcon.core.interceptor.login;
 
 import com.alibaba.fastjson.JSON;
 import com.hcon.api.domain.UserRegister;
-import com.hcon.common.DataRet;
-import com.hcon.common.Pair;
+import com.hcon.core.common.DataRet;
 import com.hcon.consts.AuthConstants;
-import com.hcon.interceptor.login.annotations.VerifyType;
+import com.hcon.core.interceptor.login.annotations.VerifyType;
 import com.hcon.utils.Aes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

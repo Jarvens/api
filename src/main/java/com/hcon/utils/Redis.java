@@ -5,10 +5,12 @@ import org.n3r.diamond.client.Miner;
 import org.n3r.diamond.client.Minerable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.Transaction;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +20,8 @@ import java.util.concurrent.TimeUnit;
  * Redis连接工具类
  * Created by kunlun on 2017/3/27.
  */
+
+@Configuration
 public class Redis implements Serializable {
 
     private static final long serialVersionUID = -1563502979845974665L;
@@ -33,15 +37,15 @@ public class Redis implements Serializable {
         HostAndPort hostAndPort = HostAndPort.fromString(connect);
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         String host = hostAndPort.getHostText();
-        int port = hostAndPort.getPort();
+        int port = 6379;
         int timeout = config.getInt("timeout", 2000);
         String password = config.getString("auth");
-        logger.info("redis hostAndPort:{},redis password:{}", hostAndPort, password);
+        logger.debug("redis hostAndPort:{},redis password:{}", hostAndPort, password);
         int database = config.getInt("database", 0);
         int maxClients = config.getInt("maxClients", 500);
         jedisPoolConfig.setMaxTotal(maxClients);
         pool = new JedisPool(jedisPoolConfig, host, port, timeout, password, database);
-        logger.info("redis 初始化完成->");
+        logger.debug("redis初始化完成,Ip:{},端口:{},超时时间:{},密码:{},数据库:{}", host, port, timeout, password, database);
     }
 
     public Long ttl(final String key) {
