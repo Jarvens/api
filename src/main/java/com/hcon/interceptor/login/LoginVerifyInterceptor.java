@@ -46,8 +46,8 @@ public abstract class LoginVerifyInterceptor extends HandlerInterceptorAdapter {
      * @param request
      * @param response
      */
-    protected void redirect2Login(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect(request.getContextPath() + "/sys/retry");
+    protected void permissionDenied(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.sendRedirect(request.getContextPath() + "/sys/permission-denied");
     }
 
 }

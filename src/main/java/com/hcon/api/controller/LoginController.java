@@ -76,8 +76,8 @@ public class LoginController {
      * @return
      */
     @ApiIgnore
-    @RequestMapping(value = "/retry")
-    public DataRet<String> retry() {
+    @RequestMapping(value = "/permission-denied")
+    public DataRet<String> permissionDenied() {
         DataRet<String> ret = new DataRet<>();
         ret.setMessage("权限不足,请联系管理员...");
         ret.setErrorCode("permission_denied");

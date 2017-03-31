@@ -30,20 +30,20 @@ public class LoginInterceptor extends LoginVerifyInterceptor {
     protected boolean validToken(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String token = request.getHeader(AuthConstants.SYS.TOKEN_NAME);
         if ("".equals(token)) {
-            redirect2Login(request, response);
+            permissionDenied(request, response);
             return false;
         }
         UserRegister userRegister = new UserRegister();
         userRegister = JSON.parseObject(Aes.decrypt(token, AuthConstants.SYS.TOKEN_DECRYPT_KEY), UserRegister.class);
         if (null == userRegister) {
-            redirect2Login(request, response);
+            permissionDenied(request, response);
             return false;
         }
         long expireTime = userRegister.getCurrentTime() + AuthConstants.SYS.TOKEN_EXPIRE_SECONDS * 1000;
         long currentTimeInMillis = Calendar.getInstance().getTimeInMillis();
         if (currentTimeInMillis > expireTime) {
             logger.info("登录超时......");
-            redirect2Login(request, response);
+            permissionDenied(request, response);
             return false;
         }
         userRegister.updateCurrentTime();
