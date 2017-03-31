@@ -40,14 +40,14 @@ public abstract class LoginVerifyInterceptor extends HandlerInterceptorAdapter {
     //token校验
     protected abstract boolean validToken(HttpServletRequest request, HttpServletResponse response) throws Exception;
 
-    /**
-     * 重定向 登录
-     *
-     * @param request
-     * @param response
-     */
-    protected void permissionDenied(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect(request.getContextPath() + "/sys/permission-denied");
-    }
+//    /**
+//     * 重定向 登录
+//     *
+//     * @param request
+//     * @param response
+//     */
+//    protected void permissionDenied(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        response.sendRedirect(request.getContextPath() + "/sys/permission-denied");
+//    }
 
 }
