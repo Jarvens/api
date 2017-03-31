@@ -3,10 +3,7 @@ package com.hcon.api.controller;
 import com.hcon.api.domain.PubUserRole;
 import com.hcon.common.DataRet;
 import com.hcon.common.GridDataRet;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.n3r.eql.EqlPage;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,13 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(value = "平台角色接口")
 public class PubUserRoleController {
 
-    /**
-     * 查询角色列表并分页
-     * @param eqlPage
-     * @param key
-     * @return
-     */
-    @ApiOperation(value = "查询角色列表", notes = "条件查询角色列表并分页")
+
+    @ApiOperation(value = "查询角色列表")
     @ApiImplicitParams({
             @ApiImplicitParam(value = "当前页", name = "currentPages", required = true, dataType = "int"),
             @ApiImplicitParam(value = "每页条数", name = "pageRows", required = true, dataType = "int"),
@@ -37,15 +29,25 @@ public class PubUserRoleController {
         return null;
     }
 
-    /**
-     * 创建角色
-     * @param userRole
-     * @return
-     */
-    @ApiOperation(value = "创建角色", notes = "创建角色")
+
+    @ApiOperation(value = "创建角色")
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public DataRet<String> create(@RequestBody PubUserRole userRole) {
         return null;
     }
 
+
+    @ApiOperation(value = "删除角色")
+    @ApiImplicitParam(value = "角色id", name = "id", dataType = "String", required = true)
+    @RequestMapping(value = "/del", method = RequestMethod.POST)
+    public DataRet<String> del(String id) {
+        return null;
+    }
+
+    @ApiOperation(value = "角色详情")
+    @ApiImplicitParam(value = "角色id", name = "id", dataType = "String", required = true)
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public DataRet<String> detail(String id) {
+        return null;
+    }
 }
