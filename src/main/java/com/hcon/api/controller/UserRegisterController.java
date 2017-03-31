@@ -25,7 +25,7 @@ import java.util.List;
 @LoginVerifyAction
 @RequestMapping("user")
 @RestController
-@Api(value = "用户接口列表", tags = "用户信息接口", description = "获取用户信息接口")
+@Api(value = "用户接口列表")
 public class UserRegisterController {
 
     @Autowired
@@ -120,6 +120,19 @@ public class UserRegisterController {
     public DataRet<String> updatePassword(Long id, String oldPassword, String newPassword) {
         DataRet<String> ret = new DataRet<>();
         return ret;
+    }
+
+    /**
+     * 根据用户ID查询用户详情
+     *
+     * @param userId
+     * @return
+     */
+    @ApiOperation(value = "根据用户id查询详细信息", notes = "用户详细信息")
+    @ApiImplicitParam(value = "用户ID", name = "userId", dataType = "String", required = true)
+    @RequestMapping(value = "/detail", method = RequestMethod.GET)
+    public DataRet<UserRegister> detail(String userId) {
+        return null;
     }
 
 }

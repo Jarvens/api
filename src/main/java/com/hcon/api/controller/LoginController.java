@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping("sys")
-@Api(value = "登录接口列表", tags = "登录接口", description = "系统登录")
+@Api(value = "登录接口列表")
 public class LoginController {
 
     @Autowired
@@ -79,8 +79,8 @@ public class LoginController {
     @RequestMapping(value = "/retry")
     public DataRet<String> retry() {
         DataRet<String> ret = new DataRet<>();
-        ret.setMessage("请重新登录");
-        ret.setErrorCode("RETRY_LOGIN");
+        ret.setMessage("权限不足,请联系管理员...");
+        ret.setErrorCode("permission_denied");
         return ret;
     }
 }
