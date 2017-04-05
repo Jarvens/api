@@ -1,6 +1,6 @@
 package com.hcon.api.controller;
 
-import com.hcon.api.domain.UserRegister;
+import com.hcon.api.domain.SysUser;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.core.common.DataRet;
 import com.hcon.utils.Redis;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -32,24 +31,24 @@ public class LoginController {
     /**
      * 登录
      *
-     * @param userRegister
+     * @param sysUser
      * @return
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ApiOperation(value = "登录", notes = "用户登录")
-    @ApiImplicitParam(value = "用户信息", name = "userRegister", dataType = "UserRegister", required = true)
-    public DataRet<String> login(@RequestBody UserRegister userRegister, HttpServletResponse response) {
+    @ApiImplicitParam(value = "用户信息", name = "sysUser", dataType = "SysUser", required = true)
+    public DataRet<String> login(@RequestBody SysUser sysUser, HttpServletResponse response) {
         DataRet<String> dataRet = new DataRet<>();
-        String value = Redis.get("name1");
-        if (StringUtils.isEmpty(userRegister.getAccount()) || StringUtils.isEmpty(userRegister.getLoginToken())) {
+        String value = Redis.get("key1");
+        if (StringUtils.isEmpty(sysUser.getAccount()) || StringUtils.isEmpty(sysUser.getPassword())) {
             return this.result(dataRet, "password_error", "用户名或密码错误");
         }
-        boolean flag = userRegisterService.login(userRegister);
+        boolean flag = userRegisterService.login(sysUser);
         if (flag) {
             //生成Token
-            String tokenVal = TokenUtils.createToken(userRegister);
+            String tokenVal = TokenUtils.createToken(sysUser);
             //更新系统时间
-            userRegister.updateCurrentTime();
+            sysUser.updateCurrentTime();
             dataRet.setMessage("登录成功");
             dataRet.setBody(tokenVal);
             return dataRet;
@@ -61,13 +60,14 @@ public class LoginController {
     /**
      * 退出系统
      *
-     * @param userRegister
+     * @param sysUser
      * @return
      */
     @RequestMapping(value = "/logout", method = RequestMethod.POST)
-    @ApiOperation(value = "注销登录", notes = "退出系统")
+    @ApiOperation(value = "退出系统", notes = "退出系统")
     @ApiImplicitParam(value = "用户信息", name = "userRegister", dataType = "UserRegister", required = true)
-    public DataRet<String> logout(@RequestBody UserRegister userRegister) {
+    public DataRet<String> logout(@RequestBody SysUser sysUser) {
+
         return null;
     }
 

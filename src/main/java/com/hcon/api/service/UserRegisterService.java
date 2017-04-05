@@ -1,9 +1,10 @@
 package com.hcon.api.service;
 
-import com.hcon.api.domain.UserRegister;
+import com.hcon.api.domain.SysUser;
 import com.hcon.core.common.DataRet;
 import com.hcon.utils.Md5;
 import org.n3r.eql.EqlPage;
+import org.n3r.eql.EqlTran;
 import org.n3r.eql.diamond.Dql;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,8 +27,8 @@ public class UserRegisterService {
      * @param key
      * @return
      */
-    public List<UserRegister> queryUserByCondition(EqlPage eqlPage, String key) {
-        List<UserRegister> userRegisterList = new Dql().returnType(UserRegister.class)
+    public List<SysUser> queryUserByCondition(EqlPage eqlPage, String key) {
+        List<SysUser> userRegisterList = new Dql().returnType(SysUser.class)
                 .params(key)
                 .limit(eqlPage)
                 .execute();
@@ -41,44 +42,43 @@ public class UserRegisterService {
      * @return
      */
     public Boolean isRegister(String account) {
-        return new Dql().returnType(UserRegister.class).params(account).execute() != null ? true : false;
+        return new Dql().returnType(SysUser.class).params(account).execute() != null ? true : false;
     }
 
     /**
      * 用户注册
      *
-     * @param userRegister
+     * @param sysUser
      * @return
      */
-    public DataRet<String> register(UserRegister userRegister) {
+    public DataRet<String> register(SysUser sysUser) {
         DataRet dataRet = new DataRet();
-        if (this.isRegister(userRegister.getAccount())) {
+        if (this.isRegister(sysUser.getAccount())) {
             return this.result("account_exist", "账号已存在,请重新输入");
         }
-        if (this.queryUserByUserName(userRegister.getName())) {
+        if (this.queryUserByUserName(sysUser.getName())) {
             return this.result("userName_exist", "用户名已存在,请重新输入");
         }
         String password = Md5.digest("888888");
-        userRegister.setLoginToken(password);
-
-
+        sysUser.setPassword(password);
         return dataRet;
     }
 
     /**
      * 用户登录
      *
-     * @param userRegister
+     * @param sysUser
      * @return
      */
-    public boolean login(UserRegister userRegister) {
-        UserRegister user = new Dql().selectFirst("login")
-                .returnType(UserRegister.class)
-                .params(userRegister.getAccount())
+    public boolean login(SysUser sysUser) {
+        EqlTran eqlTran = new Dql().newTran();
+        SysUser user = new Dql().selectFirst("login")
+                .returnType(SysUser.class)
+                .params(sysUser.getAccount())
                 .execute();
         if (null != user) {
-            logger.info("MD5加密值:{}", Md5.digest(userRegister.getLoginToken()));
-            if (!Md5.digest(userRegister.getLoginToken()).equals(user.getLoginToken())) {
+            logger.info("MD5加密值:{}", Md5.digest(sysUser.getPassword()));
+            if (!Md5.digest(sysUser.getPassword()).equals(user.getPassword())) {
                 return false;
             }
             return true;
@@ -94,7 +94,7 @@ public class UserRegisterService {
      */
     public boolean queryUserByUserName(String userName) {
         return new Dql().selectFirst("queryUserByUserName")
-                .returnType(UserRegister.class)
+                .returnType(SysUser.class)
                 .params(userName)
                 .execute() == null ? true : false;
     }

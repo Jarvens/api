@@ -1,6 +1,5 @@
 package com.hcon.api.controller;
 
-import com.hcon.api.domain.UserRegister;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.core.common.DataRet;
 import com.hcon.core.common.GridDataRet;

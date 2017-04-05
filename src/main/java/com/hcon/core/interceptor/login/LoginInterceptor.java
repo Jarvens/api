@@ -1,7 +1,7 @@
 package com.hcon.core.interceptor.login;
 
 import com.alibaba.fastjson.JSON;
-import com.hcon.api.domain.UserRegister;
+import com.hcon.api.domain.SysUser;
 import com.hcon.core.common.DataRet;
 import com.hcon.consts.AuthConstants;
 import com.hcon.core.interceptor.login.annotations.VerifyType;
@@ -36,24 +36,23 @@ public class LoginInterceptor extends LoginVerifyInterceptor {
             response.getWriter().write(JSON.toJSONString(ret));
             return false;
         }
-        UserRegister userRegister = new UserRegister();
-        userRegister = JSON.parseObject(Aes.decrypt(token, AuthConstants.SYS.TOKEN_DECRYPT_KEY), UserRegister.class);
-        if (null == userRegister) {
+        SysUser sysUser = new SysUser();
+        sysUser = JSON.parseObject(Aes.decrypt(token, AuthConstants.SYS.TOKEN_DECRYPT_KEY), SysUser.class);
+        if (null == sysUser) {
             ret.setErrorCode("permission_denied");
             ret.setMessage("请重新登录");
             response.getWriter().write(JSON.toJSONString(ret));
             return false;
         }
-        long expireTime = userRegister.getCurrentTime() + AuthConstants.SYS.TOKEN_EXPIRE_SECONDS * 1000;
+        long expireTime = sysUser.getCurrentTime() + AuthConstants.SYS.TOKEN_EXPIRE_SECONDS * 1000;
         long currentTimeInMillis = Calendar.getInstance().getTimeInMillis();
         if (currentTimeInMillis > expireTime) {
-            logger.info("登录超时......");
-            ret.setErrorCode("permission_denied");
+            ret.setErrorCode("time_out");
             ret.setMessage("登录超时,请重新登录");
             response.getWriter().write(JSON.toJSONString(ret));
             return false;
         }
-        userRegister.updateCurrentTime();
+        sysUser.updateCurrentTime();
         return true;
     }
 

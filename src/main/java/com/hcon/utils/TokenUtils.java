@@ -1,7 +1,7 @@
 package com.hcon.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.hcon.api.domain.UserRegister;
+import com.hcon.api.domain.SysUser;
 import com.hcon.consts.AuthConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,15 +18,15 @@ public class TokenUtils {
     /**
      * 生成Token
      *
-     * @param userRegister
+     * @param sysUser
      * @return
      */
-    public static String createToken(UserRegister userRegister) {
-        if (!StringUtils.hasLength(userRegister.getAccount())) {
+    public static String createToken(SysUser sysUser) {
+        if (!StringUtils.hasLength(sysUser.getAccount())) {
             logger.info("无法读取账户信息...");
             return null;
         }
-        String tokenVal = Aes.encrypt(JSON.toJSONString(userRegister), AuthConstants.SYS.TOKEN_DECRYPT_KEY);
+        String tokenVal = Aes.encrypt(JSON.toJSONString(sysUser), AuthConstants.SYS.TOKEN_DECRYPT_KEY);
         logger.info("tokenName:{},tokenValue:{}",tokenVal);
         return tokenVal;
     }
