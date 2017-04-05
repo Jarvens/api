@@ -1,5 +1,6 @@
 package com.hcon.api.controller;
 
+import com.hcon.api.domain.SysUser;
 import com.hcon.api.service.UserRegisterService;
 import com.hcon.core.common.DataRet;
 import com.hcon.core.common.GridDataRet;
@@ -25,7 +26,7 @@ import java.util.List;
 @RequestMapping("user")
 @RestController
 @Api(value = "用户接口列表")
-public class UserRegisterController {
+public class SysUserController {
 
     @Autowired
     private UserRegisterService userRegisterService;
@@ -45,9 +46,9 @@ public class UserRegisterController {
             @ApiImplicitParam(value = "每页条数", name = "pageRows", required = true, dataType = "Integer"),
             @ApiImplicitParam(value = "搜索关键字", name = "key", dataType = "string")
     })
-    public GridDataRet<UserRegister> registerUserList(EqlPage eqlPage, String key) {
-        GridDataRet<UserRegister> gridDataRet = new GridDataRet<>();
-        List<UserRegister> userRegisterList = new ArrayList<>();
+    public GridDataRet<SysUser> registerUserList(EqlPage eqlPage, String key) {
+        GridDataRet<SysUser> gridDataRet = new GridDataRet<>();
+        List<SysUser> userRegisterList = new ArrayList<>();
         userRegisterList = userRegisterService.queryUserByCondition(eqlPage, key);
         gridDataRet.setList(userRegisterList);
         gridDataRet.setPage(eqlPage.getTotalPages());
@@ -60,13 +61,13 @@ public class UserRegisterController {
     /**
      * 注册用户
      *
-     * @param userRegister
+     * @param sysUser
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ApiOperation(value = "注册用户信息", notes = "平台用户注册")
-    @ApiImplicitParam(name = "userRegister", value = "用户对象", dataType = "UserRegister", required = true)
-    public DataRet<String> register(@RequestBody UserRegister userRegister) {
+    @ApiImplicitParam(name = "userRegister", value = "用户对象", dataType = "sysUser", required = true)
+    public DataRet<String> register(@RequestBody SysUser sysUser) {
         DataRet<String> ret = new DataRet<>();
         ret.setMessage("用户已存在");
         ret.setErrorCode("ACCOUNT_EXIST");
@@ -90,13 +91,13 @@ public class UserRegisterController {
     /**
      * 更新用户信息
      *
-     * @param userRegister
+     * @param sysUser
      * @return
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @ApiOperation(value = "更新用户信息", notes = "更新用户信息")
     @ApiImplicitParam(value = "用户对象", name = "userRegister", dataType = "UserRegister", required = true)
-    public DataRet<String> update(@RequestBody UserRegister userRegister) {
+    public DataRet<String> update(@RequestBody SysUser sysUser) {
         DataRet<String> ret = new DataRet<>();
         return ret;
     }
@@ -130,7 +131,7 @@ public class UserRegisterController {
     @ApiOperation(value = "根据用户id查询详细信息", notes = "用户详细信息")
     @ApiImplicitParam(value = "用户ID", name = "userId", dataType = "String", required = true)
     @RequestMapping(value = "/detail", method = RequestMethod.GET)
-    public DataRet<UserRegister> detail(String userId) {
+    public DataRet<SysUser> detail(String userId) {
         return null;
     }
 
